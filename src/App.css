@@ -1,0 +1,28 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+#root, .App {
+	display:flex;
+	flex-direction: column;
+	text-align: center;
+	background: #404040;
+	width: 100%;
+	height: 100%;
+	align-content: space-between;
+}
+
+.adsFooter{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+
+a {
+  color: #61dafb;
+}
+
+
