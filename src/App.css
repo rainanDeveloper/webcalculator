@@ -27,7 +27,7 @@ html, body {
 .Calculator {
 	width: 100%;
 	background: #303036;
-	max-width: 400px;
+	max-width: 250px;
 	color: white;
 	padding: 8px;
 	box-shadow: 0 0 15px rgba(0,0,0,0.4)
@@ -39,6 +39,26 @@ html, body {
 	background: #ffffff08;
 	border: solid 1px #20202b;
 	text-align: right
+}
+
+
+.Calculator .virtualKeyboard {
+	margin-top: 15px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.Calculator .virtualKeyboard button {
+	border: none;
+	border-radius: 3px;
+	background: #ffffff00;
+	color: white;
+	padding: 10px;
+}
+
+.Calculator .virtualKeyboard button.hovered{
+	background: #ffffff08;
 }
 
 .adsFooter{
