@@ -12,11 +12,23 @@ function App() {
 	function handleKey(event){
 		var key = event.target
 
-		if(display===welcome){
-			setDisplay(key.dataset.value)
-		}
-		else{
-			setDisplay(display+key.dataset.value)
+		if((display+key.dataset.value).length<22){
+			if(display===welcome){
+				if(key.dataset.value==='.'){
+					setDisplay('0'+key.dataset.value)
+				}
+				else{
+					setDisplay(key.dataset.value)
+				}
+			}
+			else{
+				if(key.dataset.value==='sqrt'){
+					setDisplay(`sqrt(${display.replace(/^[/.*+-]/g, '').replace(/[/.*+-]$/g, '')})`)
+				}
+				else{
+					setDisplay((display+key.dataset.value).replace(/0(\d)/g, '$1').replace(/([/.*+-])[/.*+-]/g, '$1'))
+				}
+			}
 		}
 	}
 
@@ -30,14 +42,18 @@ function App() {
 						>{props.value&&props.value}</button>
 	}
 
+	function clear(){
+		setDisplay('0')
+	}
+
   return (
     <div className="App">
 			<div className="adsHeader"></div>
   			<div className="Calculator">
 					<div className="display">{display}</div>
 					<div className="virtualKeyboard">
-						<KeyButton value="AC"/>
-						<KeyButton keyValue="sqrt(" value="&#8730;x" handleKeyClick={handleKey}/>
+						<KeyButton value="AC" handleKeyClick={clear}/>
+						<KeyButton keyValue="sqrt" value="&#8730;x" handleKeyClick={handleKey}/>
 						<KeyButton value="%"/>
 						<KeyButton keyValue="/" value="&divide;" handleKeyClick={handleKey}/>
 						<KeyButton keyValue="7" value="7" handleKeyClick={handleKey}/>
