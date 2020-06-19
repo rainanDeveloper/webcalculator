@@ -9,10 +9,19 @@ function App() {
 		return Math.pow(n, 1/2)
 	}
 
+	function calculate(){
+		try{
+			setDisplay(eval(display).toString().substring(0,22))
+		}
+		catch(error){
+		alert('Expressão inválida!')
+		}
+	}
+
 	function handleKey(event){
 		var key = event.target
 
-		if((display+key.dataset.value).length<22){
+		if((display+key.dataset.value).length<=22){
 			if(display===welcome){
 				if(key.dataset.value==='.'){
 					setDisplay('0'+key.dataset.value)
@@ -71,7 +80,7 @@ function App() {
 						<KeyButton keyValue="0" value="0" handleKeyClick={handleKey}/>
 						<KeyButton keyValue="." value="." handleKeyClick={handleKey}/>
 						<KeyButton value="+/-"/>
-						<KeyButton value="="/>						
+						<KeyButton value="=" handleKeyClick={calculate}/>						
 					</div>
 				</div>
 			<div className="adsFooter"></div>
