@@ -14,7 +14,7 @@ function App() {
 			setDisplay(eval(display).toString().substring(0,22))
 		}
 		catch(error){
-		alert('Expressão inválida!')
+			alert('Expressão inválida!')
 		}
 	}
 
@@ -22,7 +22,7 @@ function App() {
 		var key = event.target
 
 		if((display+key.dataset.value).length<=22){
-			if(display===welcome){
+			if(display===welcome && key.dataset.value!=='sqrt'){
 				if(key.dataset.value==='.'){
 					setDisplay('0'+key.dataset.value)
 				}
@@ -32,12 +32,32 @@ function App() {
 			}
 			else{
 				if(key.dataset.value==='sqrt'){
-					setDisplay(`sqrt(${display.replace(/^[/.*+-]/g, '').replace(/[/.*+-]$/g, '')})`)
+					if(display!==welcome){
+						setDisplay(`sqrt(${display.replace(/^[/.*+-]/g, '').replace(/[/.*+-]$/g, '')})`)
+					}
+					else{
+						setDisplay(`sqrt(0)`)
+					}
 				}
 				else{
-					setDisplay((display+key.dataset.value).replace(/0(\d)/g, '$1').replace(/([/.*+-])[/.*+-]/g, '$1'))
+					setDisplay((display+key.dataset.value).replace(/0(\d)/g, '$1').replace(/([/.*+-])[/.*+-]/g, '$1').replace(/(\d+\.\d+)\.(\d{0,})/g, '$1$2'))
 				}
 			}
+		}
+	}
+
+	function setInverse(){
+	
+		if(display!==welcome){
+			try{
+				setDisplay((-eval(display)))
+			}
+			catch(error){
+				alert('Expressão inválida!')
+			}
+		}
+		else{
+			setDisplay('0')
 		}
 	}
 
@@ -79,7 +99,7 @@ function App() {
 						<KeyButton keyValue="+" value="+" handleKeyClick={handleKey}/>						
 						<KeyButton keyValue="0" value="0" handleKeyClick={handleKey}/>
 						<KeyButton keyValue="." value="." handleKeyClick={handleKey}/>
-						<KeyButton value="+/-"/>
+						<KeyButton value="+/-" handleKeyClick={setInverse}/>
 						<KeyButton value="=" handleKeyClick={calculate}/>						
 					</div>
 				</div>
