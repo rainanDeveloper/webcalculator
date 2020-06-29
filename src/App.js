@@ -75,6 +75,24 @@ function App() {
 		setDisplay('0')
 	}
 
+	function calculatePercentual(){
+		let lastValue = 0
+		let newValue = 0
+		if(display!==welcome){
+			try{
+				lastValue=eval(display.replace(/(.+)[-/+*].+/g, '$1'))
+				newValue=eval(display.replace(/.+[-/+*](.+)$/g, '$1'))
+			}
+			catch(error){
+				alert('Erro: expressão inválida!')
+				return false
+			}
+			console.log(lastValue)
+			console.log(newValue)
+			setDisplay(display.replace(/([\d.]+)$/g, (lastValue*newValue/100).toString()))
+		}
+	}
+
   return (
     <div className="App">
 			<div className="adsHeader"></div>
@@ -83,7 +101,7 @@ function App() {
 					<div className="virtualKeyboard">
 						<KeyButton value="AC" handleKeyClick={clear}/>
 						<KeyButton keyValue="sqrt" value="&#8730;x" handleKeyClick={handleKey}/>
-						<KeyButton value="%"/>
+						<KeyButton value="%" handleKeyClick={calculatePercentual}/>
 						<KeyButton keyValue="/" value="&divide;" handleKeyClick={handleKey}/>
 						<KeyButton keyValue="7" value="7" handleKeyClick={handleKey}/>
 						<KeyButton keyValue="8" value="8" handleKeyClick={handleKey}/>
