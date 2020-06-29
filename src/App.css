@@ -71,9 +71,9 @@ a {
   color: #61dafb;
 }
 
-@media (max-width: 450px){
+@media (max-width: 550px){
 	.Calculator{
-		max-width: 450px;
+		max-width: 550px;
 		width: 90%;
 	} 
 }
