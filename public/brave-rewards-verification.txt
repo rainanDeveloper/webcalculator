@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: rd-webcalculator.netlify.app
+Token: 6386a95424771a228feb0e47d846ed35f709cabc4c52043da72a3e6cb8e75b38
