@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import './App.css';
+import React, {useState} from 'react'
+import './App.css'
+import AdSense from 'react-adsense'
 
 function App() {
 	const welcome = "Bem vindo!"
